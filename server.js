@@ -17,10 +17,10 @@ const SECRET = process.env.JWT_SECRET || "fallback_secret_key";
 
 // MySQL connection
 const db = mysql.createPool({
-    host: "127.0.0.1",
-    user: "smradmin",
-    password: "1234",
-    database: "smrlabsdb"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 // Helper query
@@ -400,4 +400,5 @@ app.delete("/api/library/:id", auth, async (req, res) => {
    START SERVER
 -------------------------- */
 const PORT = 3000;
+
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
